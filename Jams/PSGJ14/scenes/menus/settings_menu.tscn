@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ces4nv2ol47gf"]
+[gd_scene load_steps=4 format=3 uid="uid://ces4nv2ol47gf"]
 
 [ext_resource type="Script" path="res://scripts/ui/back_button.gd" id="1_efjwb"]
+[ext_resource type="Texture2D" uid="uid://dvf4sthvp1brr" path="res://assets/background.png" id="1_tgkrx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8bquc"]
 content_margin_bottom = 40.0
@@ -12,6 +13,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_tgkrx")
+stretch_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
