@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://ces4nv2ol47gf"]
+
+[ext_resource type="Script" path="res://scripts/back_button.gd" id="1_efjwb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8bquc"]
+content_margin_bottom = 40.0
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MenuTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8bquc")
+text = "Settings"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+script = ExtResource("1_efjwb")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="MarginContainer/VBoxContainer/Button" method="_on_pressed"]

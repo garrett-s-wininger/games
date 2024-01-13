@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://df65weoox14bb"]
+[gd_scene load_steps=5 format=3 uid="uid://df65weoox14bb"]
 
-[ext_resource type="Script" path="res://play_button.gd" id="1_iqp66"]
-[ext_resource type="Script" path="res://quit_button.gd" id="1_j441e"]
+[ext_resource type="Script" path="res://scripts/ui/play_button.gd" id="1_iqp66"]
+[ext_resource type="Script" path="res://scripts/ui/quit_button.gd" id="1_j441e"]
+[ext_resource type="Script" path="res://scripts/settings_button.gd" id="2_clueb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m02y7"]
 content_margin_bottom = 40.0
@@ -52,6 +53,7 @@ script = ExtResource("1_iqp66")
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Settings"
+script = ExtResource("2_clueb")
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -60,4 +62,5 @@ text = "Quit
 script = ExtResource("1_j441e")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Play" to="MarginContainer/VBoxContainer/VBoxContainer/Play" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Settings" to="MarginContainer/VBoxContainer/VBoxContainer/Settings" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit" to="MarginContainer/VBoxContainer/VBoxContainer/Quit" method="_on_pressed"]
