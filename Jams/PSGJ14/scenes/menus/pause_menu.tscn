@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddb7t6tw6ph1h"]
+
+[ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_e5gaf"]
+[ext_resource type="Script" path="res://scripts/ui/quit_button.gd" id="2_m0s8d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cnsg"]
+content_margin_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_e5gaf")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2cnsg")
+text = "Paused"
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("2_m0s8d")
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer/VBoxContainer/Quit" method="_on_pressed"]

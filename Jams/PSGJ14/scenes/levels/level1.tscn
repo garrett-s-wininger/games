@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://daspj0pkxhqjd"]
+[gd_scene load_steps=3 format=3 uid="uid://daspj0pkxhqjd"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_n5t5d"]
+[ext_resource type="PackedScene" uid="uid://ddb7t6tw6ph1h" path="res://scenes/menus/pause_menu.tscn" id="2_4esfy"]
 
-[node name="Level1" type="Node2D"]
+[node name="Node2D" type="Node2D"]
 script = ExtResource("1_n5t5d")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="CounterLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "0"
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_4esfy")]
+visible = false
