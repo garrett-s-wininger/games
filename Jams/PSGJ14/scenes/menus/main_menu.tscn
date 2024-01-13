@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/play_button.gd" id="1_iqp66"]
 [ext_resource type="Script" path="res://scripts/ui/quit_button.gd" id="1_j441e"]
-[ext_resource type="Script" path="res://scripts/settings_button.gd" id="2_clueb"]
+[ext_resource type="Script" path="res://scripts/ui/settings_button.gd" id="2_clueb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m02y7"]
 content_margin_bottom = 40.0

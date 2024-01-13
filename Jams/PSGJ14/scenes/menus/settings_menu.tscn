@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ces4nv2ol47gf"]
 
-[ext_resource type="Script" path="res://scripts/back_button.gd" id="1_efjwb"]
+[ext_resource type="Script" path="res://scripts/ui/back_button.gd" id="1_efjwb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8bquc"]
 content_margin_bottom = 40.0
