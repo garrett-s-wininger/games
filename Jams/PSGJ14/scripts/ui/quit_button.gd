@@ -1,4 +1,4 @@
-extends Control
+extends Button
 
 func _on_pressed():
 	# Exit out of the application on quit, user does not want to continue any further

@@ -1,4 +1,4 @@
-extends Control
+extends Button
 
 func _on_pressed():
 	# Take the user over to the settings menu scene so that they can adjust

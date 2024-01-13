@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddb7t6tw6ph1h"]
+[gd_scene load_steps=6 format=3 uid="uid://ddb7t6tw6ph1h"]
 
 [ext_resource type="Script" path="res://scripts/ui/pause_menu.gd" id="1_e5gaf"]
+[ext_resource type="Script" path="res://scripts/ui/back_button.gd" id="2_h838i"]
 [ext_resource type="Script" path="res://scripts/ui/quit_button.gd" id="2_m0s8d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cnsg"]
 content_margin_bottom = 40.0
+
+[sub_resource type="GDScript" id="GDScript_rnwdf"]
+script/source = "extends Button
+
+func _on_pressed():
+	pass # Replace with function body.
+"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 2
@@ -28,9 +36,21 @@ theme_type_variation = &"HeaderLarge"
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2cnsg")
 text = "Paused"
 
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+script = SubResource("GDScript_rnwdf")
+
+[node name="MainMenu" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("2_h838i")
+
 [node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 script = ExtResource("2_m0s8d")
 
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/MainMenu" to="PanelContainer/VBoxContainer/MainMenu" method="_on_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="PanelContainer/VBoxContainer/Quit" method="_on_pressed"]

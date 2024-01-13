@@ -1,4 +1,4 @@
-extends Control
+extends Button
 
 func _on_pressed():
 	# User would like to start the game, we should load into the first
