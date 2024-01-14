@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjajkxmrjcvuj"]
+[gd_scene load_steps=9 format=3 uid="uid://cjajkxmrjcvuj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_012e8"]
 [ext_resource type="Texture2D" uid="uid://c7llhci68icq2" path="res://assets/character.png" id="1_86dtj"]
@@ -6,37 +6,64 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0bhg"]
 radius = 24.0
 
+[sub_resource type="Animation" id="Animation_mb18x"]
+resource_name = "firing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ryhg"]
+_data = {
+"firing": SubResource("Animation_mb18x")
+}
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_17dom"]
-polygon = PackedVector2Array(-51.8967, -18.6744, 2.99694, -0.135541, -50.0443, 22.2838, -2.99694, 0.135541)
+polygon = PackedVector2Array(-123.858, -60.4658, 2.99694, -0.135541, -117.895, 71.3994, -2.99694, 0.135541)
 
-[sub_resource type="Gradient" id="Gradient_5h64o"]
+[sub_resource type="Gradient" id="Gradient_ovj5a"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_6uyjs"]
-gradient = SubResource("Gradient_5h64o")
-fill_from = Vector2(0, 0.46789)
-fill_to = Vector2(0.917431, 0.481651)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uaqxj"]
+gradient = SubResource("Gradient_ovj5a")
+fill_from = Vector2(1, 0.495413)
+fill_to = Vector2(0.00917431, 0.490826)
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_012e8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i0bhg")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = 1.5708
 scale = Vector2(3, 3)
 texture = ExtResource("1_86dtj")
+hframes = 2
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D"]
-position = Vector2(21, 1.19209e-07)
-rotation = -3.0964
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_3ryhg")
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(-2.53002e-05, -7)
+rotation = 1.61599
+scale = Vector2(0.333333, 0.333333)
 occluder = SubResource("OccluderPolygon2D_17dom")
 
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
-position = Vector2(46.5, 0.500001)
-scale = Vector2(0.796875, 0.640625)
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-9.97736e-05, -27.1667)
+rotation = -1.5708
+scale = Vector2(0.630208, 0.6875)
 shadow_enabled = true
-texture = SubResource("GradientTexture2D_6uyjs")
+texture = SubResource("GradientTexture2D_uaqxj")
