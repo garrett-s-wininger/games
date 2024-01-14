@@ -1,14 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://cjajkxmrjcvuj"]
+[gd_scene load_steps=11 format=3 uid="uid://cjajkxmrjcvuj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_012e8"]
 [ext_resource type="Texture2D" uid="uid://c7llhci68icq2" path="res://assets/character.png" id="1_86dtj"]
+[ext_resource type="Texture2D" uid="uid://c825e1quq0nek" path="res://assets/muzzle_flash.tres" id="3_qhtg1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0bhg"]
 radius = 24.0
 
 [sub_resource type="Animation" id="Animation_mb18x"]
 resource_name = "firing"
-length = 0.3
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,14 +17,42 @@ tracks/0/path = NodePath(".:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0205011, 0.0799774),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [Vector2i(1, 0), Vector2i(0, 0)]
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MuzzleFlashL:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0208507, 0.0812515),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MuzzleFlashR:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0208196, 0.0809735),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_27gl4"]
+length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ryhg"]
 _data = {
+"RESET": SubResource("Animation_27gl4"),
 "firing": SubResource("Animation_mb18x")
 }
 
@@ -55,15 +84,29 @@ libraries = {
 "": SubResource("AnimationLibrary_3ryhg")
 }
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+[node name="SpotlightOccluder" type="LightOccluder2D" parent="Sprite2D"]
 position = Vector2(-2.53002e-05, -7)
 rotation = 1.61599
 scale = Vector2(0.333333, 0.333333)
 occluder = SubResource("OccluderPolygon2D_17dom")
+occluder_light_mask = 2
 
-[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+[node name="Spotlight" type="PointLight2D" parent="Sprite2D"]
 position = Vector2(-9.97736e-05, -27.1667)
 rotation = -1.5708
 scale = Vector2(0.630208, 0.6875)
 shadow_enabled = true
+shadow_item_cull_mask = 3
 texture = SubResource("GradientTexture2D_uaqxj")
+
+[node name="MuzzleFlashL" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(-6.00001, -1.99998)
+enabled = false
+color = Color(0.72549, 0.466667, 0.180392, 1)
+texture = ExtResource("3_qhtg1")
+
+[node name="MuzzleFlashR" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(5.99999, -2.00002)
+enabled = false
+color = Color(0.72549, 0.466667, 0.180392, 1)
+texture = ExtResource("3_qhtg1")
