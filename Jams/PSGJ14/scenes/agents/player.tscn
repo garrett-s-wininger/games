@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjajkxmrjcvuj"]
+[gd_scene load_steps=7 format=3 uid="uid://cjajkxmrjcvuj"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_012e8"]
 [ext_resource type="Texture2D" uid="uid://c7llhci68icq2" path="res://assets/character.png" id="1_86dtj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0bhg"]
 radius = 24.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_17dom"]
+polygon = PackedVector2Array(-51.8967, -18.6744, 2.99694, -0.135541, -50.0443, 22.2838, -2.99694, 0.135541)
+
+[sub_resource type="Gradient" id="Gradient_5h64o"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6uyjs"]
+gradient = SubResource("Gradient_5h64o")
+fill_from = Vector2(0, 0.46789)
+fill_to = Vector2(0.917431, 0.481651)
 
 [node name="Player" type="Node2D"]
 
@@ -19,3 +29,14 @@ texture_filter = 1
 rotation = 1.5708
 scale = Vector2(3, 3)
 texture = ExtResource("1_86dtj")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="CharacterBody2D"]
+position = Vector2(21, 1.19209e-07)
+rotation = -3.0964
+occluder = SubResource("OccluderPolygon2D_17dom")
+
+[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
+position = Vector2(46.5, 0.500001)
+scale = Vector2(0.796875, 0.640625)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_6uyjs")

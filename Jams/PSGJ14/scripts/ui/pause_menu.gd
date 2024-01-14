@@ -12,7 +12,7 @@ func _return_to_game():
 func _ready():
 	hide()
 	
-func _input(event):
+func _input(event: InputEvent):
 	# Return to the game but also mark the input event as handled so that the
 	# level does not also interpret the button press as a request to re-pause
 	if event.is_action_pressed("ui_cancel"):
