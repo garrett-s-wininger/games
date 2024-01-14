@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7llhci68icq2" path="res://assets/character.png" id="1_86dtj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i0bhg"]
-radius = 8.0
+radius = 24.0
 
 [node name="Player" type="Node2D"]
 
@@ -15,5 +15,7 @@ script = ExtResource("1_012e8")
 shape = SubResource("CircleShape2D_i0bhg")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
 rotation = 1.5708
+scale = Vector2(3, 3)
 texture = ExtResource("1_86dtj")
