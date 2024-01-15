@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://3q33pdr2nfcv"]
+
+[ext_resource type="Texture2D" uid="uid://cvorl0lnjt3ma" path="res://assets/bullet.png" id="1_jh6pm"]
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_xe3fu"]
+[ext_resource type="Texture2D" uid="uid://c825e1quq0nek" path="res://assets/muzzle_flash.tres" id="3_2bxtv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk8mh"]
+size = Vector2(10, 4)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_xe3fu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sk8mh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_jh6pm")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-9.53674e-07, 0)
+scale = Vector2(0.357422, 0.257813)
+texture = ExtResource("3_2bxtv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
