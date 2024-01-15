@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://daspj0pkxhqjd"]
+[gd_scene load_steps=10 format=3 uid="uid://daspj0pkxhqjd"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_j3qhg"]
 [ext_resource type="Texture2D" uid="uid://dvf4sthvp1brr" path="res://assets/background.png" id="2_mhmby"]
@@ -94,6 +94,12 @@ terrain_set_0/terrain_0/name = "Demonic"
 terrain_set_0/terrain_0/color = Color(0.678431, 0.0745098, 0.160784, 1)
 sources/0 = SubResource("TileSetAtlasSource_8jtqr")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2vmc3"]
+content_margin_top = 30.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1rhpj"]
+content_margin_top = 30.0
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_j3qhg")
 
@@ -115,6 +121,36 @@ layer_0/tile_data = PackedInt32Array(2162688, 65536, 1, 2162689, 65536, 0, 21626
 [node name="Player" parent="." instance=ExtResource("5_usfy7")]
 position = Vector2(60, 62)
 rotation = 0.475694
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="KillCountHeader" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2vmc3")
+text = "Enemies Defeated:"
+
+[node name="KillCount" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1rhpj")
+text = "0"
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_t2q37")]
 visible = false
