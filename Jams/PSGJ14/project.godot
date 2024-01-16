@@ -15,6 +15,10 @@ run/main_scene="res://scenes/levels/demo.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+PlayerData="*res://scripts/autoloads/player_data.gd"
+
 [display]
 
 window/size/viewport_width=1920

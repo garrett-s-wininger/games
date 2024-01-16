@@ -6,6 +6,11 @@ const FIRING_ANIMATION: String = "firing"
 @export var speed: float = 200
 var can_fire: bool = true
 @onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
+@onready var player_data: Node = get_node("/root/PlayerData")
+
+
+func _ready() -> void:
+	player_data.player_position = global_position
 
 
 func _process(_delta) -> void:
@@ -31,6 +36,8 @@ func _physics_process(_delta: float) -> void:
 	velocity = facing_direction * speed
 
 	move_and_slide()
+	player_data.player_position = global_position
+	
 
 
 func _on_animation_player_animation_finished(anim_name):
