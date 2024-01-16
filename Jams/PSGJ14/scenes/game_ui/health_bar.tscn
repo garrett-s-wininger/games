@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3hd6y64q2igd"]
+
+[sub_resource type="Gradient" id="Gradient_ew5er"]
+offsets = PackedFloat32Array(0, 0.274648, 0.704225, 1)
+colors = PackedColorArray(0.794399, 3.22476e-06, 9.62615e-07, 1, 0.837972, 0.40216, 0.0660555, 1, 0.882353, 0.811765, 0.133333, 1, 0, 0.517593, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_iqdhk"]
+gradient = SubResource("Gradient_ew5er")
+
+[node name="HealthBar" type="TextureProgressBar"]
+offset_left = -34.0
+offset_top = -36.0
+offset_right = 28.0
+offset_bottom = -29.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_iqdhk")
